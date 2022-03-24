@@ -1,0 +1,10 @@
+<mvc:View
+	controllerName="emc.hr.payroll.controller.Empty"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	>
+    <Page 
+    title="Empty View" showNavButton="true" navButtonPress="onBack">
+    <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa88aJEh32BlIiW2Fdkp_Ng-HTGglIJIpSqA" height="110%" width="100%"></Image>
+</Page>
+</mvc:View> 

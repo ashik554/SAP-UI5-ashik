@@ -1,0 +1,10 @@
+<mvc:View
+	controllerName="emc.hr.payroll.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	>
+<SplitApp id="appCon"> 
+ 
+</SplitApp>
+
+</mvc:View> 

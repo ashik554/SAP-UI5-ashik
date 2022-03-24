@@ -1,0 +1,64 @@
+<mvc:View
+	controllerName="emc.hr.payroll.controller.View1"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	>
+   <Page title="{i18n>XTIT_VIEW1}" >
+       <headerContent>
+        <Button text="Go to" icon="sap-icon://arrow-right"
+        press="onNext"></Button> 
+       </headerContent>
+    <!-- <Button text="Go to" icon="sap-icon://arrow-right"
+    press="onNext"></Button> -->
+    <content>
+    <SearchField id="idSF" search="onSearch" liveChange="onSearch">
+   </SearchField> 
+  <List id="idList" delete="onDelete" mode="SingleSelectMaster" itemPress="onNavNext" selectionChange="onFruitSelect" items="{
+     path: '/fruits',
+     sorter: {
+        path: 'name'
+     }
+  }">
+  <headerToolbar>
+     <Toolbar >
+        <ToolbarSpacer >
+
+        </ToolbarSpacer>
+        <Button icon="sap-icon://delete" press="onDeleteItems">
+
+        </Button>
+     </Toolbar>
+  </headerToolbar>
+    <items >
+ <ObjectListItem  intro="{taste}" title="{name}" number="{price}" numberUnit="{curr}" icon="{image}"></ObjectListItem>
+       <!-- <DisplayListItem 
+       value="A natural antibiotic" label="Apple"></DisplayListItem>
+       <StandardListItem title="Orange" description="The most spurce of vitamin c" icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo3CIeWRMHwTLbYjzvXwVx6fgUmKvezHS9XE1OPQoy_NDTby6Njx64zEPUNio3RMfX5Eg" ></StandardListItem>
+       <InputListItem >
+          <HBox>
+             <Label text="What is the best food for screen? "></Label>
+             <Input></Input>
+          </HBox>
+       </InputListItem>
+       <CustomListItem >
+          <Label text="Do you want cash on delivery?"></Label>
+          <Switch ></Switch>
+       </CustomListItem>
+       <ObjectListItem title="banana" intro="A great source of potasium" icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT09SMy1haWRuO0TYHfFmTLd3jaMx8R56cdb-hSy1BS29pclKJP110pcU2wixFI1FJKR60" number="150 INR" numberUnit="Per dozon">
+ <attributes>
+    <ObjectAttribute text="Yellow green" title="Color"></ObjectAttribute>
+    <ObjectAttribute text="Dozon" title="Unit"></ObjectAttribute>
+ </attributes>
+ <firstStatus>
+    <ObjectStatus text="Out of Stock" state="Warning"></ObjectStatus>
+ </firstStatus>
+       </ObjectListItem>
+       <FeedListItem icon="data:image/jpeg;base64,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" sender="Joe Biden" text="Hey Anubahav how you doing" timestamp="Fri 7th May 2020">
+
+       </FeedListItem>
+       <ActionListItem press="onITemClick" text="order Now"></ActionListItem> -->
+    </items>  
+</List>     
+    </content>
+   </Page>
+</mvc:View>
