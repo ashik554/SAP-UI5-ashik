@@ -1,0 +1,15 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:form="sap.ui.layout.form">
+    <form:SimpleForm>
+        <Label text='Color' />
+        <Text text='{color}' />
+        <Label text='Taste' />
+        <Text text='{taste}' />
+        <Label text='Price' />
+        <Text text="{
+                        parts:[{path:'price'},{path:'curr'}],
+                        formatter:'.formatter.formatCurrency'
+                    }" />
+        <Label text='Season' />
+        <Text text='{season}' />
+    </form:SimpleForm>
+</c:FragmentDefinition>

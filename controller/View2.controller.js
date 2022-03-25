@@ -11,6 +11,18 @@ sap.ui.define(
           .getRoute('detail')
           .attachPatternMatched(this.herculis, this);
       },
+      onF4Help: function () {
+        alert('That is our final product');
+      },
+      onFilter: function () {
+        alert('This is under construction');
+      },
+      onLinkPress: function (oEvent) {
+        var sText = oEvent.getSource().getText();
+        sText = 'https://google.com?q=' + sText;
+        window.open(sText);
+      },
+
       herculis: function (oEvent) {
         var sPath = this.extractPath(oEvent);
         this.getView().bindElement(sPath);

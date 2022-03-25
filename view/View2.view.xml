@@ -13,21 +13,52 @@
         <IconTabBar >
             <items>
                 <IconTabFilter icon='sap-icon://warning' text='More Info' >
-                <form:SimpleForm >
-                    <Label text='Color'/>
-                    <Text text='{color}'/>
-                    <Label text='Taste'/>
-                    <Text text='{taste}'/>
-                    <Label text='Price'/>
-                    <Text text="{
-                        parts:[{path:'price'},{path:'curr'}],
-                        formatter:'.formatter.formatCurrency'
-                    }"/>
-                    <Label text='Season'/>
-                    <Text text='{season}'/>
-                </form:SimpleForm>
+                    <core:Fragment fragmentName='emc.hr.payroll.fragments.moreInfo' type='XML'/>
+                
                 </IconTabFilter>
-                <IconTabFilter iconColor='Positive' icon='sap-icon://supplier' text='Supplier'></IconTabFilter>
+                <IconTabFilter iconColor='Positive' icon='sap-icon://supplier' text='Supplier'>
+                    <Table items='{/supplier}'>
+                        <headerToolbar>
+                            <Toolbar >
+                                <ToolbarSpacer ></ToolbarSpacer>
+                                <Button icon='sap-icon://filter' press='onFilter'/>
+                            </Toolbar>
+                        </headerToolbar>
+
+                        <columns>
+                            <Column >
+                                <header>
+                                    <Text text='Name'/>
+                                </header>
+                            </Column>
+                            <Column >
+                                <header>
+                                    <Text text='City'/>
+                                </header>
+                            </Column>
+                            <Column minScreenWidth='Tablet' demandPopin='true'>
+                                <header>
+                                    <Text text='Since When'/>
+                                </header>
+                            </Column>
+                            <Column minScreenWidth='Tablet'>
+                                <header>
+                                    <Text text='Contact'/>
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <Text text='{name}'/>
+                                <Input value='{city}' showValueHelp='true' valueHelpRequest='onF4Help' />
+                                <Text text='{sinceWhen}'/>
+                                <Link text='{person}' press='onLinkPress'></Link>
+                            </ColumnListItem>
+                        </items>
+                        
+                    </Table>
+                
+                </IconTabFilter>
                 <IconTabFilter iconColor='Negative' icon='sap-icon://home' text='Cities'>
                     <Select items="{/cities}">
                     <core:Item text='{cityName}' key='{cityName}'/>
@@ -46,7 +77,7 @@
     <Toolbar >
         <ToolbarSpacer></ToolbarSpacer>
         <Button text="Order" type="Emphasized"></Button>
-        <Button text="Cancell" type="Reject"></Button>
+        <Button text="Cancel" type="Reject"></Button>
     
     </Toolbar>
 </footer>
