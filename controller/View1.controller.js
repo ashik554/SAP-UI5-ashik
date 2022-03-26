@@ -15,14 +15,12 @@ sap.ui.define(
           .attachPatternMatched(this.herculis, this);
       },
       herculis: function (oEvent) {
-        debugger;
-
         // var fruitId = oEvent.getParameter('arguments').fruitId;
         // var sPath = '/fruits/' + fruitId;
         var sPath = this.extractPath(oEvent);
 
         var oList = this.getView().byId('idList');
-        debugger;
+
         var element;
         if (oList.getItems().length > 0) {
           for (let i = 0; i < oList.getItems().length; i++) {

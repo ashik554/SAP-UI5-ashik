@@ -17,7 +17,7 @@
                 
                 </IconTabFilter>
                 <IconTabFilter iconColor='Positive' icon='sap-icon://supplier' text='Supplier'>
-                    <Table items='{/supplier}'>
+                    <Table items='{/supplier}' id="idTab">
                         <headerToolbar>
                             <Toolbar >
                                 <ToolbarSpacer ></ToolbarSpacer>

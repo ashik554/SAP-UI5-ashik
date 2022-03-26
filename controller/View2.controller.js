@@ -1,6 +1,11 @@
 sap.ui.define(
-  ['emc/hr/payroll/controller/BaseController', 'sap/ui/core/Fragment'],
-  function (Controller, Fragment) {
+  [
+    'emc/hr/payroll/controller/BaseController',
+    'sap/ui/core/Fragment',
+    'sap/ui/model/Filter',
+    'sap/ui/model/FilterOperator',
+  ],
+  function (Controller, Fragment, Filter, FilterOperator) {
     'use strict';
 
     return Controller.extend('emc.hr.payroll.controller.View2', {
@@ -14,9 +19,42 @@ sap.ui.define(
       oCityPopup: null,
       oSuppylierPopup: null,
       onConfirm: function (oEvent) {
-        // read the value which was selected in the popup
-        //place the value to the fields Inside the table.
-        this.selectedField.setValue('Bazunga');
+        var sId = oEvent.getSource().getId();
+
+        if (sId.indexOf('city') !== -1) {
+          // read the value which was selected in the popup
+          var oSelectedItem = oEvent.getParameter('selectedItem');
+
+          var sText = oSelectedItem.getLabel();
+
+          //place the value to the fields Inside the table.
+          this.selectedField.setValue(sText);
+        } else {
+          //1.get the table object
+          var oTable = this.getView().byId('idTab');
+          //2.read the multiselect Item
+          var aSelectedItems = oEvent.getParameter('selectedItems');
+          //3.construct filter
+          var aFilters = [];
+          for (let index = 0; index < aSelectedItems.length; index++) {
+            const element = aSelectedItems[index];
+
+            const sText = element.getLabel();
+
+            aFilters.push(new Filter('name', FilterOperator.EQ, sText));
+          }
+
+          var oFilter = new Filter({
+            filters: aFilters,
+            and: false,
+          });
+
+          var items = oTable.getBinding('items');
+          console.log(items);
+          //4. pump to binding
+          oTable.getBinding('items').filter(oFilter);
+          //alert('This part is under construction');
+        }
       },
       selectedField: null,
       onF4Help: function (oEvent) {
