@@ -2,5 +2,5 @@
 	xmlns="sap.m"
 	xmlns:c="sap.ui.core"
 >
-<SelectDialog id="idPopup" multiSelect='true' confirm='onConfirm'/>
+<SelectDialog id="idPopup" multiSelect='true' confirm='onConfirm' rememberSelections='true' search='onSearchPopup'/>
 </c:FragmentDefinition>

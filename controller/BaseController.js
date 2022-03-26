@@ -9,6 +9,11 @@ sap.ui.define(
         var fruitId = oEvent.getParameter('arguments').fruitId;
         return '/fruits/' + fruitId;
       },
+      readMessage: function (key, param1) {
+        var oResourceModel = this.getOwnerComponent().getModel('i18n');
+        var oResouceBundle = oResourceModel.getResourceBundle();
+        return oResouceBundle.getText(key, param1);
+      },
     });
   }
 );

@@ -4,8 +4,19 @@ sap.ui.define(
     'sap/ui/core/Fragment',
     'sap/ui/model/Filter',
     'sap/ui/model/FilterOperator',
+    'sap/m/MessageBox',
+    'sap/m/MessageToast',
+    'sap/m/MessageStrip',
   ],
-  function (Controller, Fragment, Filter, FilterOperator) {
+  function (
+    Controller,
+    Fragment,
+    Filter,
+    FilterOperator,
+    MessageBox,
+    MessageToast,
+    MessageStrip
+  ) {
     'use strict';
 
     return Controller.extend('emc.hr.payroll.controller.View2', {
@@ -18,6 +29,20 @@ sap.ui.define(
       },
       oCityPopup: null,
       oSuppylierPopup: null,
+
+      onSearchPopup: function (oEvent) {
+        // step1: get the seach string
+        var sVal = oEvent.getParameter('value');
+
+        //s2: get the popup obj
+        var oBinding = oEvent.getParameter('itemsBinding');
+
+        //s3: prepare filter
+        var oFilter = new Filter('name', FilterOperator.Contains, sVal);
+
+        // s4: pass filter to popup items binding
+        oBinding.filter(oFilter);
+      },
       onConfirm: function (oEvent) {
         var sId = oEvent.getSource().getId();
 
@@ -77,7 +102,7 @@ sap.ui.define(
             that.oCityPopup.bindAggregation('items', {
               path: '/cities',
               template: new sap.m.DisplayListItem({
-                label: '{cityName}',
+                label: '{name}',
                 value: '{state}',
               }),
             });
@@ -114,6 +139,18 @@ sap.ui.define(
         } else {
           that.oSuppylierPopup.open();
         }
+      },
+      handleConfirm: function (status) {
+        if (status === 'OK') {
+          MessageToast.show(this.readMessage('XMSG_ORDER', '9099'));
+        } else {
+        }
+      },
+      onOrder: function (params) {
+        MessageBox.confirm(this.readMessage('XMSG_CONFIRM'), {
+          title: 'Confirmation',
+          onClose: this.handleConfirm.bind(this),
+        });
       },
       onLinkPress: function (oEvent) {
         var sText = oEvent.getSource().getText();

@@ -76,8 +76,8 @@
 <footer>
     <Toolbar >
         <ToolbarSpacer></ToolbarSpacer>
-        <Button text="Order" type="Emphasized"></Button>
-        <Button text="Cancel" type="Reject"></Button>
+        <Button text="Order" press='onOrder' type="Emphasized"></Button>
+        <Button text="Cancel" press='onCancel' type="Reject"></Button>
     
     </Toolbar>
 </footer>
