@@ -61,13 +61,13 @@
                 </IconTabFilter>
                 <IconTabFilter iconColor='Negative' icon='sap-icon://home' text='Cities'>
                     <Select items="{/cities}">
-                    <core:Item text='{cityName}' key='{cityName}'/>
+                    <core:Item text='{name}' key='{name}'/>
                     </Select>
                     <ComboBox items="{/cities}">
-                    <core:Item text='{cityName}' key='{cityName}'/>
+                    <core:Item text='{name}' key='{name}' />
                     </ComboBox>
                     <MultiComboBox items="{/cities}">
-                    <core:Item text='{cityName}' key='{cityName}'/>
+                    <core:Item text='{name}' key='{name}' />
                     </MultiComboBox>
                 </IconTabFilter>
             </items>
